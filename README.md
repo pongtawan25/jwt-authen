@@ -6,4 +6,4 @@
 
 2. npm start
 
-3. open localhost:3000
+3. Open localhost:3000
