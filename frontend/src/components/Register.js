@@ -65,14 +65,14 @@ export default function Register(props) {
               className="form-control"
               onChange={(e) => setRole(e.target.value)}
             >
-              <option>User</option>
-              <option>Admin</option>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
             </select>
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-dark">
             Submit
           </button>
-          <Link to="/" className="btn btn btn-link">
+          <Link to="/" className="btn btn btn-dark-link">
             Cancel
           </Link>
         </form>

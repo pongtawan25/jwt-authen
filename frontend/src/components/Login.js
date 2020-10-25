@@ -24,7 +24,10 @@ export default function Login(props) {
               }
             );
             if (result.data.token) {
-              localStorage.setItem("user", JSON.stringify(result.data));
+              localStorage.setItem(
+                "user",
+                JSON.stringify({ token: result.data.token })
+              );
               props.history.push("/profile");
             } else {
               alert(JSON.stringify(result.data));
@@ -55,10 +58,10 @@ export default function Login(props) {
               }}
             />
           </div>
-          <button type="submit" className="btn btn-primary mr-2">
+          <button type="submit" className="btn btn-dark mr-2">
             Login
           </button>
-          <Link to="/register" className="btn btn btn-link">
+          <Link to="/register" className="btn btn btn-dark-link">
             Register
           </Link>
         </form>

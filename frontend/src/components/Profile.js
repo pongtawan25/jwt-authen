@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import { Link } from "react-router-dom";
 
 export default class Profile extends Component {
   state = {
@@ -8,10 +9,10 @@ export default class Profile extends Component {
   };
 
   componentDidMount() {
-    this.fetchUsersData();
+    this.fetchUserData();
   }
 
-  fetchUsersData = async () => {
+  fetchUserData = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const token = user.token;
     const decoded = jwtDecode(token);
@@ -25,6 +26,9 @@ export default class Profile extends Component {
   };
 
   render() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = user.token;
+    const decoded = jwtDecode(token);
     return (
       <div>
         <div className="row">
@@ -37,6 +41,11 @@ export default class Profile extends Component {
                 <p className="lead">Username: {this.state.users.username}</p>
                 <p className="lead">Role: {this.state.users.role}</p>
               </div>
+              {decoded.role === "admin" && (
+                <Link to="/userlist" className="btn btn-dark">
+                  View Users
+                </Link>
+              )}
             </div>
           </div>
         </div>
